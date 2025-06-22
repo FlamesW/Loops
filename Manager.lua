@@ -120,4 +120,4 @@ end
 getgenv().LoopModule = LoopModule;
 getgenv().LoopManager = LoopManager;
 
-return LoopModule;
+return LoopModule,LoopManager;
