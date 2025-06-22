@@ -1,7 +1,7 @@
 # Loop Manager Example:
 ```lua
 -- // Made by @Flames9925 (Discord)~
-local LoopModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+local LoopModule,LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
 
 --[[ RenderStep Example:
 LoopModule.RenderStep(LoopManager,function(dt) -- // You can use dt to get the time.
