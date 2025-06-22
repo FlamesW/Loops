@@ -10,10 +10,11 @@ local LoopManager = {Unloaded = false};
 function LoopModule.WhileLoop(waitPls, LoopManager, Call, Name)
     if Name then
         LoopModule.Storage[Name] = function()
-            while true do task.wait(waitPls or 0.35);
+            while true do
                 if not LoopManager.Unloaded and Call then
                     Call();
                 end
+                task.wait(waitPls or 0.35);
             end
         end
     end
@@ -121,3 +122,8 @@ getgenv().LoopModule = LoopModule;
 getgenv().LoopManager = LoopManager;
 
 return LoopModule,LoopManager;
+
+-- // Todo List:
+-- Add Debugger (Option)
+-- Add Heartbeat + more loops (Soon/Unlikely)
+-- Maybe GetState function (Unlikely)
