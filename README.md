@@ -53,3 +53,26 @@ task.wait(3);
 -- // Kills everything.
 LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It completely removes everything (Use it on Ui Library's unloaded functions).
 ```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# How you would control it: (Not safe for test)
+```lua
+-- // Taken out of my aimbot source
+LoopModule.WhileLoop(1,LoopManager,function()
+    if shared.Settings.AimbotChecks.WallCheck then
+        print("Wall Checking.");
+    end
+end,"AimbotWallCheckToggle")
+
+AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle", {
+    Text = "Wall Check",
+    Default = shared.Settings.AimbotChecks.WallCheck,
+    Tooltip = "Will not target people behind a wall",
+    Callback = function(Value)
+        shared.Settings.AimbotChecks.WallCheck = Value;
+    end
+})
+
+-- // I recommend to create custom function with the module according to your ui element.
+```
