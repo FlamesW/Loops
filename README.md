@@ -121,7 +121,7 @@ end,"PriorityRender",Enum.RenderPriority.Camera.Value)
 LoopModule.BindKey("Keybind",Enum.KeyCode.E,"Began",function()
     print("E Pressed");
 end)
-``
+```
 
 ```lua
 local Held = false
