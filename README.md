@@ -155,7 +155,9 @@ LoopModule.UnbindKey("Bye_Dude");
 ```lua
 -- // Stops but keeps the loop.
 LoopModule:ForceStop("MyFLoop",false);
+```
 
+```lua
 -- // Stops and deletes the loop from memory.
 LoopModule:ForceStop("MyFLoop",true);
 ```
