@@ -1,6 +1,6 @@
 # Loop Manager Example:
 ```lua
--- // Made by @Flames9925 (Discord)~
+-- // Made by @hikari_kuroi (Discord)~
 local LoopModule,LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
 
 --[[ RenderStep Example:
@@ -73,6 +73,109 @@ AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle", {
         shared.Settings.AimbotChecks.WallCheck = Value;
     end
 })
+```
 
--- // I recommend to create custom function with the module according to your ui element.
+# Docs: 
+
+- Set up
+```lua
+local LoopModule,LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+```
+
+- While Loop
+```lua
+LoopModule.WhileLoop(1,LoopManager,function()
+    print("Hi:)");
+end,"FLoop")
+```
+
+- Render Stepped/ HeartBeat /Stepped
+```lua
+LoopModule.RenderStep(LoopManager,function(dt)
+    print("Render:", dt);
+end,"RenderStepLoop")
+```
+
+```lua
+LoopModule.HeartBeat(LoopManager,function(dt)
+    print("Render:", dt);
+end,"HeartBeatLoop")
+```
+
+```lua
+LoopModule.Stepped(LoopManager,function(dt)
+    print("Render:", dt);
+end,"SteppedLoop")
+```
+
+- Bind Render (BindToRenderStep)
+```lua
+LoopModule.BindRender(LoopManager,function(dt)
+    print("Render:", dt);
+end,"PriorityRender",Enum.RenderPriority.Camera.Value)
+```
+* Default: end,"PriorityRender") --> Enum.RenderPriority.Last.Value
+
+- Key Binder
+```lua
+LoopModule.BindKey("Keybind",Enum.KeyCode.E,"Began",function()
+    print("E Pressed");
+end)
+``
+
+```lua
+local Held = false
+
+LoopModule.BindKey("KeybindHold",Enum.KeyCode.F,"Hold",function()
+    if not Held then
+        print("F Pressed");
+        Held = true
+    end
+    print("Holding F...")
+end, function()
+    print("Released F");
+    Held = false
+end,1)
+```
+
+# Misc:
+
+- Rebind Key
+```lua
+LoopModule.RebindKey("G_Dude",Enum.KeyCode.G);
+``
+- Remove Key
+```lua
+LoopModule.UnbindKey("Bye_Dude");
+```
+
+- While Loop RenderStepped / HeartBeat / Stepped / BindToRenderStep
+
+- Stop Floops
+```lua
+-- // Stops but keeps the loop.
+LoopModule:ForceStop("MyFLoop",false);
+
+-- // Stops and deletes the loop from memory.
+LoopModule:ForceStop("MyFLoop",true);
+```
+
+- Start Floops (Recovers Loops)
+```lua
+LoopModule:ForceStart("MyFLoop");
+```
+
+## Behold, Za WAURODOOO!!
+
+```lua
+ -- // Stops everything
+LoopModule:Toggle(LoopManager,true);
+
+ -- // Time has begun to move again.
+LoopModule:Toggle(LoopManager,false);
+```
+
+## Kills Everything (KYS)
+```lua
+LoopModule:Kill(LoopManager); -- // Bye:)~ <3
 ```
