@@ -10,7 +10,8 @@ local LoopModule = {ActiveConnections = {}, KeyBinds = {},
 }
 
 local LoopManager = {Unloaded = false};
-local Env = (getgenv and getgenv()) or shared or _G
+((getgenv and getgenv()) or shared or _G).Env = ((getgenv and getgenv()) or shared or _G);
+local Env = Env
 local Notify = Env.Debug and function(...) warn("[Kaori6]:", ...) end or function() end
 
 -- // Skidded by Obsidian's Lib
