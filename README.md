@@ -60,7 +60,7 @@ LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It comple
 ```lua
 shared.Settings = {
     ["AimbotChecks"] = {
-        WallCheck = (true),
+        WallCheck = (true), -- // Defaults to true~
         TeamCheck = (false)
     },
 };
@@ -72,7 +72,7 @@ LoopModule.WhileLoop(1,LoopManager,function()
     end
 end,"AimbotWallCheckToggle")
 
-AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle", {
+AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle",{
     Text = "Wall Check",
     Default = shared.Settings.AimbotChecks.WallCheck,
     Tooltip = "Will not target people behind a wall",
