@@ -145,13 +145,13 @@ function LoopModule.BindKey(Name, Key, Mode, Call, Released, waitBoy)
         end
 
         local Beginning = UserInputService.InputBegan:Connect(function(Input, __)
-            if not __ and input.KeyCode == Key and not Holding then Holding = true;
+            if not __ and Input.KeyCode == Key and not Holding then Holding = true;
                 StartHolding()
             end
         end)
 
         local Ending = UserInputService.InputEnded:Connect(function(Input, __)
-            if not __ and input.KeyCode == Key then local Holding, Stopping = false, false;
+            if not __ and Input.KeyCode == Key then local Holding, Stopping = false, false;
                 if Released then
                     SafeCall(Released)
                 end
@@ -163,7 +163,7 @@ function LoopModule.BindKey(Name, Key, Mode, Call, Released, waitBoy)
         local Signal = (Mode == "Began") and UserInputService.InputBegan or UserInputService.InputEnded
 
         local Connection = Signal:Connect(function(Input, __)
-            if not __ and input.KeyCode == Key and not LoopManager.Unloaded then
+            if not __ and Input.KeyCode == Key and not LoopManager.Unloaded then
                 SafeCall(Call)
             end
         end)
