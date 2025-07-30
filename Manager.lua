@@ -292,7 +292,6 @@ function LoopModule:Toggle(LoopManager, bool)
     end
 end
 
-
 Env.LoopModule = LoopModule;
 Env.LoopManager = LoopManager;
 
