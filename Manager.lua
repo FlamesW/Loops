@@ -279,7 +279,7 @@ function LoopModule:Kill(LoopManager)
         self.UnbindKey(Fbind);
     end
 
-    table.clear(LoopModule.Storage) table.clear(LoopModule.Keybinds);
+    table.clear(LoopModule.Storage) table.clear(LoopModule.KeyBinds);
     table.clear(LoopModule.ActiveConnections);
 
     Env.LoopModule, Env.LoopManager = nil, nil
