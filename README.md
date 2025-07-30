@@ -1,7 +1,8 @@
 # Loop Manager Example:
 ```lua
 -- // Made by @hikari_kuroi (Discord)~
-local LoopModule,LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+Env.Debug = true -- // Debug Mode.
 
 --[[ RenderStep Example:
 LoopModule.RenderStep(LoopManager,function(dt) -- // You can use dt to get the time.
@@ -86,7 +87,8 @@ AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle",{
 
 - Set up
 ```lua
-local LoopModule,LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+Env.Debug = true -- // Debug Mode.
 ```
 
 - While Loop
