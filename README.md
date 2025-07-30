@@ -63,7 +63,7 @@ shared.Settings = {
         WallCheck = (true),
         TeamCheck = (false)
     },
-}
+};
 
 -- // Obsidian Lib Components.
 LoopModule.WhileLoop(1,LoopManager,function()
