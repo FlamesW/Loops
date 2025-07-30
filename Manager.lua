@@ -138,9 +138,7 @@ function LoopModule.BindKey(Name, Key, Mode, Call, Released, waitBoy)
             Stopping = false
             task.spawn(function()
                 while not Stopping do
-                    if LoopManager.Unloaded then return end;
-					SafeCall(Call)
-                    task.wait(Delay)
+                    if LoopManager.Unloaded then return end SafeCall(Call) task.wait(Delay);
                 end
             end)
         end
@@ -221,7 +219,7 @@ function LoopModule:ForceStart(Name)
     local FLoop = LoopModule.ActiveConnections[Name]
 
     if not FLoop then
-		Notify("'" .. Name .. "' is not defined or got deleted.")
+	Notify("'" .. Name .. "' is not defined or got deleted.")
         return nil
     end
 
@@ -251,7 +249,7 @@ function LoopModule:ForceStart(Name)
             LoopModule.ActiveConnections[Name] = {Type = "RBXScriptConnection", Connection = Type, Service = FLoop.Service}
             return Type
         else
-            Notify("Failed to restart "..'"'..Name..'"');
+            Notify("Failed to restart "..'"'..Name..'"')
             return nil
         end
     elseif FLoop.Type == "BindToRenderStep" then
@@ -260,11 +258,11 @@ function LoopModule:ForceStart(Name)
             RunService:BindToRenderStep(FLoop.Name, Enum.RenderPriority.Last.Value, Restart);
             return LoopModule.ActiveConnections[Name]
         else
-            warn("Failed to restart "..'"'..Name..'"');
+            Notify("Failed to restart "..'"'..Name..'"')
             return nil
         end
     else
-        warn("'"..Name.."' is already running in the background.");
+        Notify("'"..Name.."' is already running in the background.")
         return FLoop
     end
 end
