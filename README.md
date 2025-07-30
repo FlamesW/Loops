@@ -11,11 +11,11 @@ end,"MyRenderStepped") -- // Name to identify your loop in the Loop Manager (Opt
 
 -- // Active Loops (Runs by default).
 LoopModule.WhileLoop(1,LoopManager,function() -- // 1 Second loop.
-    print("[Loop Manager]: Loop 1");
+    print("[FLoop Manager]: Loop 1");
 end,"Loop1Second")
 
 LoopModule.WhileLoop(2,LoopManager,function() -- // 2 Second loop.
-    print("[Loop Manager]: Loop 2");
+    print("[FLoop Manager]: Loop 2");
 end,"Loop2Second")
 
 task.wait(3);
@@ -27,13 +27,13 @@ LoopModule:ForceStart("Loop2Second"); -- // Will return you with a warn in F9 Co
 task.wait(3);
 
 -- // Will stop Loop2Second.
-print("[Loop Manager]: Attempted to stop. (Loop2Second)");
+print("[FLoop Manager]: Attempted to stop. (Loop2Second)");
 LoopModule:ForceStop("Loop2Second",false); -- // Stops certain loop but keeps it in the active connections.
 
 task.wait(3);
 
 -- // Will start Loop2Second.
-print("[Loop Manager]: Attempted to restart. (Loop2Second)");
+print("[FLoop Manager]: Attempted to restart. (Loop2Second)");
 LoopModule:ForceStart("Loop2Second"); -- // Starts certain loop again (Only if you didnt delete it from storage).
 
 task.wait(3);
@@ -56,9 +56,9 @@ LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It comple
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# How you would control it: (Not safe for test)
+# How you would control it:
 ```lua
--- // Taken out of my aimbot source
+-- // Obsidian Lib Components
 LoopModule.WhileLoop(1,LoopManager,function()
     if shared.Settings.AimbotChecks.WallCheck then
         print("Wall Checking.");
