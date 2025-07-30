@@ -60,20 +60,19 @@ LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It comple
 # How you would control it:
 ```lua
 -- // Made by @hikari_kuroi (Discord)~
-Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
-Env.Debug = true -- // Debug Mode.
-
--- // Obsidian Lib UI
-Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
-Env.SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/SaveManager.lua"))();
-
--- // Settings
 shared.Settings = {
     ["AimbotChecks"] = {
         WallCheck = (true), -- // Defaults to true~
         TeamCheck = (false)
     },
 };
+
+Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+Env.Debug = true -- // Debug Mode.
+
+-- // Obsidian Lib UI
+Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
+Env.SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/SaveManager.lua"))();
 
 -- // Obsidian Lib Components.
 LoopModule.WhileLoop(1,LoopManager,function()
