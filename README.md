@@ -123,7 +123,7 @@ end,"PriorityRender",Enum.RenderPriority.Camera.Value)
 ```
 * Default: end,"PriorityRender") --> Enum.RenderPriority.Last.Value
 
-- Key Binder
+- Keybind Binder
 ```lua
 LoopModule.BindKey("Keybind",Enum.KeyCode.E,"Began",function()
     print("E Pressed");
@@ -147,14 +147,14 @@ end,1)
 
 # Misc:
 
-- Rebind Key
+- Rebind Keybind
 ```lua
 LoopModule.RebindKey("G_Dude",Enum.KeyCode.G);
 ```
 
-- Remove Key
+- Remove Keybind
 ```lua
-LoopModule.UnbindKey("Bye_Dude");
+LoopModule.UnbindKey("G_Dude");
 ```
 
 - While Loop RenderStepped / HeartBeat / Stepped / BindToRenderStep
