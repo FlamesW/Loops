@@ -13,6 +13,7 @@ local Env = (getgenv and getgenv()) or shared or _G
 local Debug = true -- // Yes or no?
 local Notify = Debug and function(...) warn("[Kaori6]:", ...) end or function() end
 
+-- // Skidded by Obsidian's Lib
 local SafeCall = function(Src,...)
     if not (Src and typeof(Src) == "function") then
         return
