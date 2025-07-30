@@ -73,8 +73,8 @@ Env.Debug = true -- // Debug Mode.
 Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
 
 local Window = Library:CreateWindow({
-	Title = "Floop Manager",
-	Footer = "Variant: example",
+	Title = "Floop Manager | Aimbot",
+	Footer = "Version: eX.127",
 	Icon = 95816097006870,
 	NotifySide = "Right",
 	ShowCustomCursor = false,
