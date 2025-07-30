@@ -83,6 +83,7 @@ local Window = Library:CreateWindow({
 local Tabs = {
     Main = Window:AddTab("Aimbot","sticker"),
 }
+
 local AimbotOptionsGroup = Tabs.Main:AddLeftGroupbox("Aimbot Options","file-code-2");
 
 -- // Obsidian Lib Components.
