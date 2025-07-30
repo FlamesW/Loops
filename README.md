@@ -71,7 +71,6 @@ Env.Debug = true -- // Debug Mode.
 
 -- // Obsidian Lib UI
 Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
-Env.SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/SaveManager.lua"))();
 
 local Window = Library:CreateWindow({
 	Title = "Floop Manager",
