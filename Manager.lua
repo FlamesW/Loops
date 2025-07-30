@@ -181,7 +181,7 @@ function LoopModule.RebindKey(Name, ReBind)
         return
     end
 
-    LoopModule.BindKey(Name, ReBind, Keybinds.Mode, Keybinds.Call, Keybinds.Released, Keybinds.Delay or 0.1;)
+    LoopModule.BindKey(Name, ReBind, Keybinds.Mode, Keybinds.Call, Keybinds.Released, Keybinds.Delay or 0.1)
 end
 
 function LoopModule.UnbindKey(Name)
