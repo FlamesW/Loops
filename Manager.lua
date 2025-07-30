@@ -204,7 +204,7 @@ function LoopModule:ForceStop(Name, Del)
         if Floop.Type == "RBXScriptConnection" and Floop.Connection then
             Floop.Connection:Disconnect();
         elseif Floop.Type == "thread" and coroutine.status(Floop.Thread) ~= "dead" then
-            -- // Dinga la ginga ding ding dong~
+            task.cancel(Floop.Thread);
         elseif Floop.Type == "BindToRenderStep" then
             RunService:UnbindFromRenderStep(Floop.Name);
         end
