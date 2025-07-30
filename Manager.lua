@@ -10,8 +10,7 @@ local LoopModule = {ActiveConnections = {}, KeyBinds = {},
 
 local LoopManager = {Unloaded = false};
 local Env = (getgenv and getgenv()) or shared or _G
-local Debug = true -- // Yes or no?
-local Notify = Debug and function(...) warn("[Kaori6]:", ...) end or function() end
+local Notify = Env.Debug and function(...) warn("[Kaori6]:", ...) end or function() end
 
 -- // Skidded by Obsidian's Lib
 local SafeCall = function(Src,...)
@@ -291,6 +290,7 @@ function LoopModule:Toggle(LoopManager, bool)
         LoopManager.Unloaded = bool;
     end
 end
+
 
 Env.LoopModule = LoopModule;
 Env.LoopManager = LoopManager;
