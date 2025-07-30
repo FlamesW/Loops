@@ -21,7 +21,7 @@ end,"Loop2Second")
 task.wait(3);
 
 -- // Will try to restart Loop2Second (Even though it already runs).
-print("[Loop Manager]: Attempted to restart. (Loop2Second)");
+print("[FLoop Manager]: Attempted to restart. (Loop2Second)");
 LoopModule:ForceStart("Loop2Second"); -- // Will return you with a warn in F9 Console that its already running.
 
 task.wait(3);
@@ -39,13 +39,13 @@ LoopModule:ForceStart("Loop2Second"); -- // Starts certain loop again (Only if y
 task.wait(3);
 
 -- // Will stop and delete Loop1Second.
-print("[Loop Manager]: Attempted to stop and delete. (Loop1Second)");
+print("[FLoop Manager]: Attempted to stop and delete. (Loop1Second)");
 LoopModule:ForceStop("Loop1Second",true);  -- // Stops certain loop and deletes it from the active connections.
 
 task.wait(3);
 
 -- // Will try to restart Loop1Second (Even though it got deleted).
-print("[Loop Manager]: Attempted to restart. (Loop1Second)");
+print("[FLoop Manager]: Attempted to restart. (Loop1Second)");
 LoopModule:ForceStart("Loop1Second"); -- // Will return you with a warn in F9 Console (You cant restart loops that were deleted).
 
 task.wait(3);
