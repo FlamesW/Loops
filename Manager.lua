@@ -1,10 +1,9 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
-((getgenv and getgenv()) or shared or _G).Env = ((getgenv and getgenv()) or shared or _G);
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
 
-local Env = Env
+local Env = setmetatable({}, {__index = (getgenv and getgenv()) or shared or _G,__newindex = function(t, k, v) rawset(t, k, v) end})
 local RunService: RunService = cloneref(game:GetService("RunService"));
 local UserInputService: UserInputService = cloneref(game:GetService("UserInputService"));
 local LoopModule = {ActiveConnections = {}, KeyBinds = {},
