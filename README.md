@@ -63,7 +63,6 @@ LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It comple
 shared.Settings = {
     ["AimbotChecks"] = {
         WallCheck = (true), -- // Defaults to true~
-        TeamCheck = (false)
     },
 };
 
@@ -73,6 +72,19 @@ Env.Debug = true -- // Debug Mode.
 -- // Obsidian Lib UI
 Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
 Env.SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/addons/SaveManager.lua"))();
+
+local Window = Library:CreateWindow({
+	Title = "Floop Manager",
+	Footer = "Variant: example",
+	Icon = 95816097006870,
+	NotifySide = "Right",
+	ShowCustomCursor = false,
+})
+
+local Tabs = {
+    Main = Window:AddTab("Aimbot","sticker"),
+}
+local AimbotOptionsGroup = Tabs.Main:AddLeftGroupbox("Aimbot Options","file-code-2");
 
 -- // Obsidian Lib Components.
 LoopModule.WhileLoop(1,LoopManager,function()
