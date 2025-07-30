@@ -58,7 +58,14 @@ LoopModule:Kill(LoopManager); -- // Recalling it will return in error, It comple
 
 # How you would control it:
 ```lua
--- // Obsidian Lib Components
+shared.Settings = {
+    ["AimbotChecks"] = {
+        WallCheck = (true),
+        TeamCheck = (false)
+    },
+}
+
+-- // Obsidian Lib Components.
 LoopModule.WhileLoop(1,LoopManager,function()
     if shared.Settings.AimbotChecks.WallCheck then
         print("Wall Checking.");
