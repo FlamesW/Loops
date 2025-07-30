@@ -1,8 +1,10 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
+((getgenv and getgenv()) or shared or _G).Env = ((getgenv and getgenv()) or shared or _G);
 local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
 
+local Env = Env
 local RunService: RunService = cloneref(game:GetService("RunService"));
 local UserInputService: UserInputService = cloneref(game:GetService("UserInputService"));
 local LoopModule = {ActiveConnections = {}, KeyBinds = {},
@@ -10,8 +12,6 @@ local LoopModule = {ActiveConnections = {}, KeyBinds = {},
 }
 
 local LoopManager = {Unloaded = false};
-((getgenv and getgenv()) or shared or _G).Env = ((getgenv and getgenv()) or shared or _G);
-local Env = Env
 local Notify = Env.Debug and function(...) warn("[Kaori6]:", ...) end or function() end
 
 -- // Skidded by Obsidian's Lib
