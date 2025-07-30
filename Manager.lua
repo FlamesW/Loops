@@ -296,3 +296,10 @@ Env.LoopModule = LoopModule;
 Env.LoopManager = LoopManager;
 
 return LoopModule,LoopManager
+
+--[[
+# Todo list: 
+- Improve keybinds structure 🟡
+- Maybe enviroment manager (Easier to code with)
+
+--]]
