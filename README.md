@@ -73,7 +73,7 @@ Env.Debug = true -- // Debug Mode.
 Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
 
 local Window = Library:CreateWindow({
-	Title = "Floop Manager (EX)",
+	Title = "Floops (Example)",
 	Footer = "Internal Version e.127.exe | By @hikari_kuroi",
 	Icon = 72133521375266,
 	NotifySide = "Right",
