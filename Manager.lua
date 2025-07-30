@@ -4,6 +4,7 @@ local cloneref = (cloneref or clonereference or function(instance: any)
 end)
 
 local RunService: RunService = cloneref(game:GetService("RunService"));
+local UserInputService: UserInputService = cloneref(game:GetService("UserInputService"));
 local LoopModule = {ActiveConnections = {}, KeyBinds = {},
     Storage = {},
 }
