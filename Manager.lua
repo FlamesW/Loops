@@ -275,7 +275,7 @@ function LoopModule:Kill(LoopManager)
         self:ForceStop(Floop, true);
     end
 
-	for Fbind in pairs(LoopModule.KeyBinds) do
+    for Fbind in pairs(LoopModule.KeyBinds) do
         self.UnbindKey(Fbind);
     end
 
