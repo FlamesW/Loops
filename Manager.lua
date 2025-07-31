@@ -1,9 +1,9 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
-local cloneref = (cloneref or clonereference or function(instance: any)
+local Env = (function(Futa) Futa.Env = Futa; return Futa end)(getgenv())
+local cloneref = (cloneref or clonereference or function(instance: any);
     return instance
 end)
 
-local Env = setmetatable({}, {__index = (getgenv and getgenv()) or shared or _G,__newindex = function(t, k, v) rawset(t, k, v) end})
 local RunService: RunService = cloneref(game:GetService("RunService"));
 local UserInputService: UserInputService = cloneref(game:GetService("UserInputService"));
 local LoopModule = {ActiveConnections = {}, KeyBinds = {},
@@ -292,8 +292,8 @@ function LoopModule:Toggle(LoopManager, bool)
     end
 end
 
-Env.LoopModule = LoopModule;
-Env.LoopManager = LoopManager;
+-- Env.LoopModule = LoopModule;
+-- Env.LoopManager = LoopManager;
 
 return LoopModule,LoopManager
 
