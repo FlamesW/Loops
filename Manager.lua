@@ -1,5 +1,5 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
-local Env = (function(Futa) Futa.Env = Futa; return Futa end)(getgenv())
+local Env = (function(ok) Futa.Env = ok; return ok end)(getgenv())
 local cloneref = (cloneref or clonereference or function(instance: any);
     return instance
 end)
@@ -292,14 +292,7 @@ function LoopModule:Toggle(LoopManager, bool)
     end
 end
 
--- Env.LoopModule = LoopModule;
--- Env.LoopManager = LoopManager;
+Env.LoopModule = LoopModule;
+Env.LoopManager = LoopManager;
 
 return LoopModule,LoopManager
-
---[[
-# Todo list: 
-- Improve keybinds structure 🟡
-- Maybe enviroment manager (Easier to code with)
-
---]]
