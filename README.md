@@ -144,7 +144,7 @@ LoopModule.BindRender(LoopManager,function(dt)
 end,"PriorityRender",Enum.RenderPriority.Camera.Value)
 ```
 * Default: end,"PriorityRender") --> Enum.RenderPriority.Last.Value
-```
+
 
 # Misc:
 
