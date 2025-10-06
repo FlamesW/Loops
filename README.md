@@ -144,40 +144,9 @@ LoopModule.BindRender(LoopManager,function(dt)
 end,"PriorityRender",Enum.RenderPriority.Camera.Value)
 ```
 * Default: end,"PriorityRender") --> Enum.RenderPriority.Last.Value
-
-- Keybind Binder
-```lua
-LoopModule.BindKey("Keybind",Enum.KeyCode.E,"Began",function()
-    print("E Pressed");
-end)
-```
-
-```lua
-local Held = false
-
-LoopModule.BindKey("KeybindHold",Enum.KeyCode.F,"Hold",function()
-    if not Held then
-        print("F Pressed");
-        Held = true
-    end
-    print("Holding F...")
-end, function()
-    print("Released F");
-    Held = false
-end,1)
 ```
 
 # Misc:
-
-- Rebind Keybind
-```lua
-LoopModule.RebindKey("G_Dude",Enum.KeyCode.G);
-```
-
-- Remove Keybind
-```lua
-LoopModule.UnbindKey("G_Dude");
-```
 
 - While Loop RenderStepped / HeartBeat / Stepped / BindToRenderStep
 
