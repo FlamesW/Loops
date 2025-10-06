@@ -1,7 +1,7 @@
 # Loop Manager Example:
 ```lua
 -- // Made by @hikari_kuroi (Discord)~
-Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+local LoopModule, LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
 Env.Debug = true -- // Debug Mode.
 
 --[[ RenderStep Example:
@@ -66,7 +66,7 @@ shared.Settings = {
     },
 };
 
-Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
+local LoopModule, LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
 Env.Debug = true -- // Debug Mode.
 
 -- // Obsidian Lib UI
