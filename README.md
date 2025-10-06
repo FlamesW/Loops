@@ -2,7 +2,6 @@
 ```lua
 -- // Made by @hikari_kuroi (Discord)~
 local LoopModule, LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
-Env.Debug = true -- // Debug Mode.
 
 --[[ RenderStep Example:
 LoopModule.RenderStep(LoopManager,function(dt) -- // You can use dt to get the time.
@@ -67,10 +66,9 @@ shared.Settings = {
 };
 
 local LoopModule, LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
-Env.Debug = true -- // Debug Mode.
 
 -- // Obsidian Lib UI
-Env.Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/main/Library.lua"))();
 
 local Window = Library:CreateWindow({
 	Title = "Floops (Example)",
