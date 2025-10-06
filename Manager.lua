@@ -4,7 +4,7 @@ local cloneref = (cloneref or clonereference or function(instance: any)
 end)
 
 local RunService: RunService = cloneref(game:GetService("RunService"));
-local LoopModule = {ActiveConnections = {}, KeyBinds = {},
+local LoopModule = {ActiveConnections = {},
     Storage = {},
 }
 
@@ -120,83 +120,6 @@ function LoopModule.Heartbeat(LoopManager, Call, Name)
     return Connection
 end
 
-function LoopModule.BindKey(Name, Key, Mode, Call, Released, waitBoy)
-    Mode = Mode or "Began"
-    Delay = waitBoy or 0.1
-
-    if not Name or not Key or not Call then
-        Notify("Incorrect Keybind arguments.")
-        return
-    end
-
-    LoopModule.UnbindKey(Name)
-
-    if Mode == "Hold" then
-        local Holding, Stopping = false,false;
-
-        local StartHolding = function() 
-            Stopping = false
-            task.spawn(function()
-                while not Stopping do
-                    if LoopManager.Unloaded then return end SafeCall(Call) task.wait(Delay);
-                end
-            end)
-        end
-
-        local Beginning = UserInputService.InputBegan:Connect(function(Input, __)
-            if not __ and Input.KeyCode == Key and not Holding then Holding = true;
-                StartHolding()
-            end
-        end)
-
-        local Ending = UserInputService.InputEnded:Connect(function(Input, __)
-            if not __ and Input.KeyCode == Key then local Holding, Stopping = false, false;
-                if Released then
-                    SafeCall(Released)
-                end
-            end
-        end)
-
-        LoopModule.KeyBinds[Name] = {Connection = {Beginning, Ending}, Mode = "Hold", Key = Key}
-    elseif Mode == "Began" or Mode == "Ended" then
-        local Signal = (Mode == "Began") and UserInputService.InputBegan or UserInputService.InputEnded
-
-        local Connection = Signal:Connect(function(Input, __)
-            if not __ and Input.KeyCode == Key and not LoopManager.Unloaded then
-                SafeCall(Call)
-            end
-        end)
-
-        LoopModule.KeyBinds[Name] = {Connection = Connection, Mode = Mode, Key = Key}
-    else
-        Notify("Invalid Mode '"..tostring(Mode).."' in Keybinds.")
-    end
-end
-
-function LoopModule.RebindKey(Name, ReBind)
-    local Keybinds = LoopModule.KeyBinds[Name]
-    if not Keybinds then
-        Notify("Keybind '"..Name.."' is not defined or got deleted.")
-        return
-    end
-
-    LoopModule.BindKey(Name, ReBind, Keybinds.Mode, Keybinds.Call, Keybinds.Released, Keybinds.Delay or 0.1;)
-end
-
-function LoopModule.UnbindKey(Name)
-    local Keybinds = LoopModule.KeyBinds[Name]
-    if Keybinds then
-        if typeof(Keybinds.Connection) == "table" then
-            for _, Connections in pairs(Keybinds.Connection) do
-                if Connections.Disconnect then Connections:Disconnect() end
-            end
-        elseif Keybinds.Connection and Keybinds.Connection.Disconnect then
-            Keybinds.Connection:Disconnect();
-        end
-        LoopModule.KeyBinds[Name] = nil
-    end
-end
-
 function LoopModule:ForceStop(Name, Del)
     local Floop = LoopModule.ActiveConnections[Name]
     if Floop then
@@ -274,11 +197,7 @@ function LoopModule:Kill(LoopManager)
         self:ForceStop(Floop, true);
     end
 
-    for Fbind in pairs(LoopModule.KeyBinds) do
-        self.UnbindKey(Fbind);
-    end
-
-    table.clear(LoopModule.Storage) table.clear(LoopModule.Keybinds);
+    table.clear(LoopModule.Storage);
     table.clear(LoopModule.ActiveConnections);
 
     Env.LoopModule, Env.LoopManager = nil, nil
@@ -290,7 +209,6 @@ function LoopModule:Toggle(LoopManager, bool)
         LoopManager.Unloaded = bool;
     end
 end
-
 
 Env.LoopModule = LoopModule;
 Env.LoopManager = LoopManager;
