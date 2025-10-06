@@ -1,16 +1,15 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
-local Env = (function(ok) ok.Env = ok; return ok end)(getgenv())
-local cloneref = (cloneref or clonereference or function(instance: any);
+local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
 
 local RunService: RunService = cloneref(game:GetService("RunService"));
-local UserInputService: UserInputService = cloneref(game:GetService("UserInputService"));
 local LoopModule = {ActiveConnections = {}, KeyBinds = {},
     Storage = {},
 }
 
 local LoopManager = {Unloaded = false};
+local Env = (getgenv and getgenv()) or shared or _G
 local Notify = Env.Debug and function(...) warn("[Kaori6]:", ...) end or function() end
 
 -- // Skidded by Obsidian's Lib
@@ -181,7 +180,7 @@ function LoopModule.RebindKey(Name, ReBind)
         return
     end
 
-    LoopModule.BindKey(Name, ReBind, Keybinds.Mode, Keybinds.Call, Keybinds.Released, Keybinds.Delay or 0.1)
+    LoopModule.BindKey(Name, ReBind, Keybinds.Mode, Keybinds.Call, Keybinds.Released, Keybinds.Delay or 0.1;)
 end
 
 function LoopModule.UnbindKey(Name)
@@ -204,7 +203,7 @@ function LoopModule:ForceStop(Name, Del)
         if Floop.Type == "RBXScriptConnection" and Floop.Connection then
             Floop.Connection:Disconnect();
         elseif Floop.Type == "thread" and coroutine.status(Floop.Thread) ~= "dead" then
-            task.cancel(Floop.Thread);
+            -- // Dinga la ginga ding ding dong~
         elseif Floop.Type == "BindToRenderStep" then
             RunService:UnbindFromRenderStep(Floop.Name);
         end
@@ -220,7 +219,7 @@ function LoopModule:ForceStart(Name)
     local FLoop = LoopModule.ActiveConnections[Name]
 
     if not FLoop then
-	Notify("'" .. Name .. "' is not defined or got deleted.")
+        Notify("'" .. Name .. "' is not defined or got deleted.")
         return nil
     end
 
@@ -279,7 +278,7 @@ function LoopModule:Kill(LoopManager)
         self.UnbindKey(Fbind);
     end
 
-    table.clear(LoopModule.Storage) table.clear(LoopModule.KeyBinds);
+    table.clear(LoopModule.Storage) table.clear(LoopModule.Keybinds);
     table.clear(LoopModule.ActiveConnections);
 
     Env.LoopModule, Env.LoopManager = nil, nil
@@ -291,6 +290,7 @@ function LoopModule:Toggle(LoopManager, bool)
         LoopManager.Unloaded = bool;
     end
 end
+
 
 Env.LoopModule = LoopModule;
 Env.LoopManager = LoopManager;
