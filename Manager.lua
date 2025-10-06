@@ -1,5 +1,5 @@
 -- // Made by Kaori6~ (@hikari_kuroi)
-local Env = (function(ok) Futa.Env = ok; return ok end)(getgenv())
+local Env = (function(ok) ok.Env = ok; return ok end)(getgenv())
 local cloneref = (cloneref or clonereference or function(instance: any);
     return instance
 end)
