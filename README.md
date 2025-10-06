@@ -105,8 +105,7 @@ AimbotOptionsGroup:AddToggle("AimbotWallCheckToggle",{
 
 - Set up
 ```lua
-Env.LoopModule, Env.LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
-Env.Debug = true -- // Debug Mode.
+loacl LoopModule, LoopManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/FlamesW/Loops/home/Manager.lua"))();
 ```
 
 - While Loop
@@ -171,7 +170,6 @@ LoopModule:Toggle(LoopManager,true);
  -- // Time has begun to move again.
 LoopModule:Toggle(LoopManager,false);
 ```
-
 ## Kills Everything (KYS)
 ```lua
 LoopModule:Kill(LoopManager); -- // Bye:)~ <3
