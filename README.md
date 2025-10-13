@@ -142,10 +142,7 @@ end,"PriorityRender",Enum.RenderPriority.Camera.Value)
 ```
 * Default: end,"PriorityRender") --> Enum.RenderPriority.Last.Value
 
-
 # Misc:
-
-- While Loop RenderStepped / HeartBeat / Stepped / BindToRenderStep
 
 - Stop Floops
 ```lua
@@ -156,7 +153,7 @@ LoopModule:ForceStop("MyFLoop",false);
 LoopModule:ForceStop("MyFLoop",true);
 ```
 
-- Start Floops (Recovers Loops)
+- Start Floops (Cant start deleted loop)
 ```lua
 LoopModule:ForceStart("MyFLoop");
 ```
