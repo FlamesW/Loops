@@ -11,7 +11,7 @@ local LoopModule = {ActiveConnections = {},
 
 -- // Settings
 local LoopManager = {Unloaded = false, Debug = true, Safecall = true};
--- local Env = (getgenv and getgenv()) or shared or _G
+local Env = (getgenv and getgenv()) or shared or _G
 local Notify = function(...) 
     if LoopManager.Debug then 
         warn("[Loop Manager]:", ...);
@@ -230,7 +230,7 @@ function LoopModule:Toggle(LoopManager, bool)
     end
 end
 
---Env.LoopModule = LoopModule;
---Env.LoopManager = LoopManager;
+Env.LoopModule = LoopModule;
+Env.LoopManager = LoopManager;
 
 return LoopModule, LoopManager
