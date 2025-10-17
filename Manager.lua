@@ -25,7 +25,7 @@ local SafeCall = function(Src, ...)
     if LoopManager.Safecall then
         local Result = table.pack(xpcall(Src, function(Error)
             task.defer(error, debug.traceback(Error, 2))
-            Notify("Callback error at:", Error);
+            print("[Loop Manager]: Callback:", Error);
             return Error
         end, ...))
 
