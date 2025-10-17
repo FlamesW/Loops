@@ -3,42 +3,52 @@ local cloneref = (cloneref or clonereference or function(instance: any)
     return instance
 end)
 
+-- // Services
 local RunService: RunService = cloneref(game:GetService("RunService"));
 local LoopModule = {ActiveConnections = {},
     Storage = {},
 }
 
-local LoopManager = {Unloaded = false};
-local Env = (getgenv and getgenv()) or shared or _G
-local Notify = Env.Debug and function(...) warn("[Kaori6]:", ...) end or function() end
+-- // Settings
+local LoopManager = {Unloaded = false, Debug = true, Safecall = true}; 
+local Notify = function(...) LoopManager.Debug and warn("[Loop Manager]:", ...) end
 
--- // Skidded by Obsidian's Lib
-local SafeCall = function(Src,...)
+local SafeCall = function(Src, ...)
     if not (Src and typeof(Src) == "function") then
         return
     end
+    if LoopManager.Safecall then
+        local Result = table.pack(xpcall(Src, function(Error)
+            task.defer(error, debug.traceback(Error, 2))
+            Notify("Callback error at:", Error);
+            return Error
+        end, ...))
 
-    local Result = table.pack(xpcall(Src, function(Error)
-        task.defer(error, debug.traceback(Error, 2))
-        Notify("Callback error at:", Error);
-        return Error
-    end, ...))
+        if not Result[1] then
+            return nil
+        end
 
-    if not Result[1] then
-        return nil
+        return table.unpack(Result, 2, Result.n);
+    else
+        return Src(...)
     end
-
-    return table.unpack(Result, 2, Result.n);
 end
 
-function LoopModule.WhileLoop(waitBoy, LoopManager, Call, Name)
+function LoopModule.WhileLoop(waitBoy, LoopManager, Call, Name, waitLol)
     if Name then
         LoopModule.Storage[Name] = function()
             while true do
-                if not LoopManager.Unloaded then
-                    SafeCall(Call)
+                if waitLol and waitBoy then
+                    task.wait(waitBoy);
                 end
-                task.wait(waitBoy or 0.35);
+
+                if not LoopManager.Unloaded then
+                    SafeCall(Call);
+                end
+
+                if not waitLol and waitBoy then
+                    task.wait(waitBoy);
+                end
             end
         end
     end
@@ -55,7 +65,9 @@ end
 function LoopModule.RenderStep(LoopManager, Call, Name)
     if Name then
         LoopModule.Storage[Name] = function(dt)
-            if LoopManager.Unloaded then return end;
+            if LoopManager.Unloaded then 
+                return
+            end
             SafeCall(Call, dt)
         end
     end
@@ -72,7 +84,9 @@ end
 function LoopModule.BindRender(LoopManager, Call, Name, Priority)
     if Name then
         LoopModule.Storage[Name] = function(dt)
-            if LoopManager.Unloaded then return end;
+            if LoopManager.Unloaded then 
+                return
+            end
             SafeCall(Call, dt)
         end
     end
@@ -89,7 +103,9 @@ end
 function LoopModule.Stepped(LoopManager, Call, Name)
     if Name then
         LoopModule.Storage[Name] = function(t, dt)
-            if LoopManager.Unloaded then return end;
+            if LoopManager.Unloaded then 
+                return
+            end
             SafeCall(Call, t, dt)
         end
     end
@@ -106,7 +122,9 @@ end
 function LoopModule.Heartbeat(LoopManager, Call, Name)
     if Name then
         LoopModule.Storage[Name] = function(dt)
-            if LoopManager.Unloaded then return end;
+            if LoopManager.Unloaded then 
+                return
+            end
             SafeCall(Call, dt)
         end
     end
@@ -199,9 +217,6 @@ function LoopModule:Kill(LoopManager)
 
     table.clear(LoopModule.Storage);
     table.clear(LoopModule.ActiveConnections);
-
-    Env.LoopModule, Env.LoopManager = nil, nil
-    -- // Notify("Bye bye:) *Windows Shutdown Sound*");
 end
 
 function LoopModule:Toggle(LoopManager, bool)
@@ -210,7 +225,4 @@ function LoopModule:Toggle(LoopManager, bool)
     end
 end
 
-Env.LoopModule = LoopModule;
-Env.LoopManager = LoopManager;
-
-return LoopModule,LoopManager
+return LoopModule, LoopManager
